@@ -2272,6 +2272,11 @@ export class BattleTooltips {
 			if (!value.tryAbility("Guts")) value.modify(0.5, 'Burn');
 		}
 
+		// Freeze special attack power reduction
+		if (this.battle.gen > 2 && serverPokemon.status === 'frz' && move.category === 'Special') {
+			value.modify(0.5, 'Freeze');
+		}
+
 		if (
 			move.id === 'steelroller' &&
 			!this.battle.hasPseudoWeather('Electric Terrain') &&
