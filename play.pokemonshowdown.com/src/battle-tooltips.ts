@@ -668,7 +668,15 @@ export class BattleTooltips {
 			text += `<p>Base power: ${value}</p>`;
 		}
 
-		let accuracy = this.getMoveAccuracy(move, value);
+		// If Singles or one Pokemon is left, we check accuracy based on target. Otherwise, we don't bother.
+		let accuracy;
+		if (foeActive.length == 1) {
+			let target = foeActive[0] || foeActive[1] || foeActive[2];
+			accuracy = this.getMoveAccuracy(move, value, target);
+		} else {
+			accuracy = this.getMoveAccuracy(move, value);
+		}
+		
 
 		// Deal with Nature Power special case, indicating which move it calls.
 		if (move.id === 'naturepower') {
@@ -1750,7 +1758,7 @@ export class BattleTooltips {
 	}
 
 	// Gets the current accuracy for a move.
-	getMoveAccuracy(move: Dex.Move, value: ModifiableValue, target?: Pokemon) {
+	getMoveAccuracy(move: Dex.Move, value: ModifiableValue, target?: Pokemon | null) {
 		value.reset(move.accuracy === true ? 0 : move.accuracy, true);
 
 		let pokemon = value.pokemon;
@@ -1767,6 +1775,11 @@ export class BattleTooltips {
 			value.weatherModify(0, 'Rain Dance');
 			value.weatherModify(0, 'Primordial Sea');
 		}
+		
+		if (target && target.status === 'par') { 
+			value.modify(0, 'Paralysis');
+		}
+
 		value.abilityModify(0, 'No Guard');
 		if (!value.value) return value;
 
