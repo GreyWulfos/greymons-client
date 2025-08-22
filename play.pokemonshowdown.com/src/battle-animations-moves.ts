@@ -37470,6 +37470,8 @@ BattleMoveAnims['glaciate'] = { anim: BattleMoveAnims['freezedry'].anim };
 BattleMoveAnims['frostbreath'] = { anim: BattleMoveAnims['freezedry'].anim };
 BattleMoveAnims['aurorabeam'] = { anim: BattleMoveAnims['icebeam'].anim };
 BattleMoveAnims['powdersnow'] = { anim: BattleMoveAnims['icywind'].anim };
+BattleMoveAnims['frostbite'] = { anim: BattleMoveAnims['icywind'].anim };
+
 
 BattleMoveAnims['pinmissile'] = { anim: BattleMoveAnims['bulletseed'].anim };
 BattleMoveAnims['attackorder'] = { anim: BattleMoveAnims['bulletseed'].anim };
