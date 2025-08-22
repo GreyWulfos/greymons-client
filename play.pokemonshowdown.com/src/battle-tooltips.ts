@@ -1284,6 +1284,9 @@ export class BattleTooltips {
 		if (ability === 'furcoat') {
 			stats.def *= 2;
 		}
+		if (item === 'fullmetaljacket') {
+			stats.def *= 1.5;
+		}
 		if (this.battle.abilityActive('Vessel of Ruin')) {
 			if (ability !== 'vesselofruin') {
 				stats.spa = Math.floor(stats.spa * 0.75);
@@ -2796,6 +2799,9 @@ export class BattleStatGuesser {
 		}
 		if (itemid === 'assaultvest') {
 			specialBulk *= 1.5;
+		}
+		if (itemid === 'fullmetaljacket') {
+			physicalBulk *= 1.5;
 		}
 
 		let bulk = physicalBulk + specialBulk;
