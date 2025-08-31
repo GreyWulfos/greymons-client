@@ -1162,13 +1162,24 @@ export class BattleTooltips {
 				stats.spd = Math.floor(stats.spd * 1.5);
 			}
 			if (this.pokemonHasType(pokemon, 'Ice') && weather === 'snowscape') {
-				stats.def = Math.floor(stats.def * 1.5);
+				stats.spd = Math.floor(stats.spd * 1.5);
 			}
-			if (ability === 'sandrush' && weather === 'sandstorm') {
-				speedModifiers.push(2);
+			if (weather === 'sandstorm') {
+				if (ability === 'sandrush') {
+					speedModifiers.push(2);
+				}
+				if (ability === 'sandveil') {
+					stats.def = Math.floor(stats.def * 1.5);
+				}
 			}
-			if (ability === 'slushrush' && (weather === 'hail' || weather === 'snowscape')) {
-				speedModifiers.push(2);
+			if (weather === 'hail' || weather === 'snowscape') {
+				if (ability === 'slushrush') {
+					speedModifiers.push(2);
+				}
+
+				if (ability === 'snowcloak') {
+					stats.spd = Math.floor(stats.spd * 1.5);
+				}
 			}
 			if (item !== 'utilityumbrella') {
 				if (weather === 'sunnyday' || weather === 'desolateland') {
