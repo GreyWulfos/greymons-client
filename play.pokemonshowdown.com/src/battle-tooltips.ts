@@ -1162,7 +1162,7 @@ export class BattleTooltips {
 				stats.spd = Math.floor(stats.spd * 1.5);
 			}
 			if (this.pokemonHasType(pokemon, 'Ice') && weather === 'snowscape') {
-				stats.spd = Math.floor(stats.spd * 1.5);
+				stats.def = Math.floor(stats.def * 1.5);
 			}
 			if (weather === 'sandstorm') {
 				if (ability === 'sandrush') {
