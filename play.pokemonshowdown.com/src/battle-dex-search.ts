@@ -1724,7 +1724,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const isTradebacks = format.includes('tradebacks');
 		const regionBornLegality = dex.gen >= 6 &&
 			(/^battle(spot|stadium|festival)/.test(format) || format.startsWith('bss') ||
-				format.startsWith('vgc') || (dex.gen === 9 && this.formatType !== 'natdex'));
+				format.startsWith('vgc'));
 
 		let learnsetid = this.firstLearnsetid(species.id);
 		let moves: string[] = [];
