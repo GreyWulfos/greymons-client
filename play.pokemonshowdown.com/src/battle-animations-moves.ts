@@ -13,6 +13,50 @@ import { type AnimTable, BattleOtherAnims } from './battle-animations';
 import { Config } from './client-main';
 
 export const BattleMoveAnims: AnimTable = {
+	// new moves begin
+
+	blowout: {
+		anim(scene, [attacker, defender]) {
+			let xf = [1, -1, 1, -1];
+			let yf = [1, -1, -1, 1];
+			let xf2 = [1, 0, -1, 0];
+			let yf2 = [0, 1, 0, -1];
+
+			for (let i = 0; i < 4; i++) {
+				scene.showEffect('waterwisp', {
+					x: attacker.x,
+					y: attacker.y,
+					z: attacker.z,
+					scale: 0.5,
+					opacity: 1,
+				}, {
+					x: attacker.x + 240 * xf[i],
+					y: attacker.y,
+					z: attacker.z + 137 * yf[i],
+					scale: 1,
+					opacity: 0.5,
+					time: 800,
+				}, 'accel');
+				scene.showEffect('waterwisp', {
+					x: attacker.x,
+					y: attacker.y,
+					z: attacker.z,
+					scale: 0.5,
+					opacity: 1,
+				}, {
+					x: attacker.x + 339 * xf2[i],
+					y: attacker.y,
+					z: attacker.z + 194 * yf2[i],
+					scale: 1,
+					opacity: 0.5,
+					time: 800,
+				}, 'accel');
+			}
+		},
+	},
+
+	// new moves end
+
 	taunt: {
 		anim(scene, [attacker, defender]) {
 			BattleOtherAnims.dance.anim(scene, [attacker, defender]);
@@ -37560,6 +37604,8 @@ BattleMoveAnims['destinybond'] = { anim: BattleMoveAnims['painsplit'].anim };
 BattleMoveAnims['reflecttype'] = { anim: BattleMoveAnims['painsplit'].anim };
 
 BattleMoveAnims['selfdestruct'] = { anim: BattleMoveAnims['explosion'].anim };
+
+BattleMoveAnims['rehydrate'] = { anim: BattleMoveAnims['aquaring'].anim };
 
 BattleMoveAnims['acid'] = { anim: BattleMoveAnims['sludge'].anim };
 BattleMoveAnims['acidspray'] = { anim: BattleMoveAnims['sludge'].anim };
